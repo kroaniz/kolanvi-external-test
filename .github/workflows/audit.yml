@@ -9,13 +9,16 @@ jobs:
   external-resilience-check:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout Target Code
         uses: actions/checkout@v4
 
-      - name: Run Kolanvi Action From Marketplace / Public Registry
+      - name: Run Kolanvi Action
         uses: kroaniz/kolanvi-action@main
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          auto_pr: 'true'
           fail_on_critical: 'false'
