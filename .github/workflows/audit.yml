@@ -1,0 +1,21 @@
+name: Kolanvi Public Verification
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  external-resilience-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Target Code
+        uses: actions/checkout@v4
+
+      - name: Run Kolanvi Action From Marketplace / Public Registry
+        uses: kroaniz/kolanvi-action@main
+        with:
+          fail_on_critical: 'false'
