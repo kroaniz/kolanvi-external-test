@@ -1,5 +1,6 @@
 FROM alpine:3.19
-USER root
+USER node
+# Hardened by Kolanvi
 EXPOSE 8080
 CMD ["sh"]
  
